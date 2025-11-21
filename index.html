@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация - TG Click</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Страница авторизации -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-box">
+                <h1>Вход в систему</h1>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Логин</label>
+                        <input type="text" id="username" name="username" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                    </div>
+                    <div id="errorMessage" class="error-message"></div>
+                    <button type="submit" class="btn-primary">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Главное меню -->
+    <div id="menuPage" class="page">
+        <div class="menu-container">
+            <header class="menu-header">
+                <h1>Главное меню</h1>
+                <button id="logoutBtn" class="btn-logout">Выйти</button>
+            </header>
+            <nav class="menu-nav">
+                <a href="#" id="createStoreLink" class="menu-link">
+                    <div class="menu-card">
+                        <div class="menu-icon">➕</div>
+                        <h2>Создать магазин</h2>
+                        <p>Добавить новый магазин в систему</p>
+                    </div>
+                </a>
+                <a href="#" id="storeListLink" class="menu-link">
+                    <div class="menu-card">
+                        <div class="menu-icon">📋</div>
+                        <h2>Список магазинов</h2>
+                        <p>Просмотр всех магазинов</p>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Страница выбора шаблона магазина -->
+    <div id="templatePage" class="page">
+        <div class="template-container">
+            <header class="template-header">
+                <button id="backToMenuBtn" class="btn-back">← Назад</button>
+                <h1>Выберите шаблон магазина</h1>
+            </header>
+            <div class="templates-grid">
+                <div class="template-card" data-template="phones">
+                    <div class="template-icon">📱</div>
+                    <h2>Мобильные телефоны</h2>
+                    <p>Шаблон для магазина мобильных устройств</p>
+                </div>
+                <div class="template-card" data-template="flowers">
+                    <div class="template-icon">🌸</div>
+                    <h2>Цветы</h2>
+                    <p>Шаблон для цветочного магазина</p>
+                </div>
+                <div class="template-card" data-template="clothing">
+                    <div class="template-icon">👕</div>
+                    <h2>Одежда</h2>
+                    <p>Шаблон для магазина одежды</p>
+                </div>
+                <div class="template-card" data-template="toys">
+                    <div class="template-icon">🧸</div>
+                    <h2>Игрушки</h2>
+                    <p>Шаблон для магазина игрушек</p>
+                </div>
+                <div class="template-card" data-template="furniture">
+                    <div class="template-icon">🪑</div>
+                    <h2>Мебель</h2>
+                    <p>Шаблон для мебельного магазина</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Страница магазина цветов -->
+    <div id="flowersPage" class="page">
+        <div class="flowers-container">
+            <!-- Хедер -->
+            <header class="flowers-header">
+                <div class="header-top">
+                    <span class="header-link">Главная</span>
+                    <div class="header-logo">
+                        <div class="logo-circle">🌸</div>
+                    </div>
+                    <div class="header-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Поиск" class="search-input">
+                    </div>
+                    <button class="menu-toggle">☰</button>
+                </div>
+            </header>
+
+            <!-- Рекламный баннер -->
+            <div class="promo-banner" id="promoBanner">
+                <button class="edit-banner-btn" id="editBannerBtn" title="Редактировать баннер">✏️</button>
+                <div class="promo-badge" id="promoBadge">Акция</div>
+                <div class="promo-content">
+                    <h2 class="promo-title" id="promoTitle">101 ромашка за 2999</h2>
+                    <div class="promo-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Навигация по категориям -->
+            <nav class="category-nav">
+                <button class="category-btn active">Все</button>
+                <button class="category-btn">Букеты</button>
+                <button class="category-btn">Розы</button>
+                <button class="category-btn">Экзотика</button>
+                <button class="category-btn">Вазы</button>
+            </nav>
+
+            <!-- Кнопка добавления товара -->
+            <div class="add-product-section">
+                <button id="addProductBtn" class="btn-add-product">+ Добавить товар</button>
+            </div>
+
+            <!-- Сетка товаров -->
+            <div id="flowersGrid" class="flowers-grid">
+                <!-- Товары будут добавлены через JavaScript -->
+            </div>
+
+            <!-- Кнопка назад -->
+            <div class="flowers-footer">
+                <button id="backToTemplateBtn" class="btn-back">← Назад к шаблонам</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для добавления/редактирования товара -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Добавить товар</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="addProductForm" class="modal-form">
+                <div class="form-group">
+                    <label for="productName">Название товара</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Цена (₽)</label>
+                    <input type="number" id="productPrice" required>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Изображение товара</label>
+                    <input type="file" id="productImage" accept="image/*">
+                    <div class="image-preview" id="imagePreview"></div>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Описание (необязательно)</label>
+                    <textarea id="productDescription" rows="3"></textarea>
+                </div>
+                <input type="hidden" id="editingProductId">
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel">Отмена</button>
+                    <button type="submit" class="btn-submit" id="submitBtn">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для редактирования баннера -->
+    <div id="editBannerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Редактировать баннер</h2>
+                <button class="modal-close" id="closeBannerModal">&times;</button>
+            </div>
+            <form id="editBannerForm" class="modal-form">
+                <div class="form-group">
+                    <label for="bannerTitle">Текст баннера</label>
+                    <input type="text" id="bannerTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="bannerBadge">Текст бейджа</label>
+                    <input type="text" id="bannerBadge" required>
+                </div>
+                <div class="form-group">
+                    <label for="bannerImage">Фоновое изображение (необязательно)</label>
+                    <input type="file" id="bannerImage" accept="image/*">
+                    <div class="image-preview" id="bannerImagePreview"></div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="cancelBannerBtn">Отмена</button>
+                    <button type="submit" class="btn-submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
